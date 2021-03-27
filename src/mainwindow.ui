@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>371</width>
+    <height>320</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>371</width>
+    <height>320</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>371</width>
+    <height>320</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>GF1 Function Generator</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/icons/active64.png</normaloff>
+    <normalon>:/icons/icons/active64.png</normalon>
+    <disabledoff>:/icons/icons/greyed64.png</disabledoff>
+    <disabledon>:/icons/icons/greyed64.png</disabledon>
+    <activeoff>:/icons/icons/active64.png</activeoff>
+    <activeon>:/icons/icons/active64.png</activeon>
+    <selectedoff>:/icons/icons/selected64.png</selectedoff>
+    <selectedon>:/icons/icons/selected64.png</selectedon>:/icons/icons/active64.png</iconset>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTextBrowser" name="textBrowserCommand">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>205</y>
+      <width>361</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBoxGenParams">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>5</y>
+      <width>231</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Generation Parameters</string>
+    </property>
+    <widget class="QComboBox" name="comboBoxWave">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>30</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Sinusoidal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Triangular</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QDoubleSpinBox" name="doubleSpinBoxFreq">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>70</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="decimals">
+      <number>3</number>
+     </property>
+     <property name="maximum">
+      <double>25000.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>1.000000000000000</double>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="doubleSpinBoxAmp">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>110</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="decimals">
+      <number>2</number>
+     </property>
+     <property name="maximum">
+      <double>5.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.100000000000000</double>
+     </property>
+     <property name="value">
+      <double>2.500000000000000</double>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelWave">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>28</y>
+       <width>101</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Waveform</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelFreq">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>68</y>
+       <width>101</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Frequency (KHz)</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelAmp">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>108</y>
+       <width>101</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Amplitude (Vpp)</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonClear">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>150</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Clear</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonApply">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>150</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Apply</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBoxControl">
+    <property name="geometry">
+     <rect>
+      <x>245</x>
+      <y>5</y>
+      <width>121</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Control</string>
+    </property>
+    <widget class="QPushButton" name="pushButtonStart">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>101</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Start</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonStop">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>101</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Stop</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonReset">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>150</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Reset</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>371</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>&amp;Settings</string>
+    </property>
+    <addaction name="actionAutoApply"/>
+    <addaction name="actionResetClear"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <action name="actionQuit">
+   <property name="text">
+    <string>&amp;Quit</string>
+   </property>
+   <property name="toolTip">
+    <string>Quit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>&amp;About GF1 GUI</string>
+   </property>
+  </action>
+  <action name="actionAutoApply">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Auto apply changes</string>
+   </property>
+  </action>
+  <action name="actionResetClear">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Clear after reset</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>170</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
