@@ -18,15 +18,32 @@
    Please feel free to contact me via e-mail: samuel.fmlourenco@gmail.com */
 
 
+#ifndef SERIAL_H
+#define SERIAL_H
+
 // Includes
-#include "mainwindow.h"
-#include <QApplication>
+#include <QDialog>
 
-int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-
-    return a.exec();
+namespace Ui {
+class Serial;
 }
+
+class Serial : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit Serial(QWidget *parent = 0);
+    ~Serial();
+    QString serialLineEditText() const;
+    void setSerialLineEditText(const QString &serialstr);
+
+private slots:
+    void on_pushButtonRefresh_clicked();
+
+private:
+    Ui::Serial *ui;
+    void list();
+};
+
+#endif // SERIAL_H

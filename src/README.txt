@@ -11,7 +11,10 @@ of relevant files follows:
 – mainwindow.cpp;
 – mainwindow.h;
 – mainwindow.ui;
-– resources.qrc.
+– resources.qrc;
+– serial.cpp;
+– serial.h;
+– serial.ui.
 
 In order to compile successfully, you must have the packages "build-essential"
 and "qt5-default" already installed. Given that, if you wish to simply
