@@ -14,13 +14,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    about.cpp
+    about.cpp \
+    serial.cpp
 
 HEADERS  += mainwindow.h \
-    about.h
+    about.h \
+    serial.h
 
 FORMS    += mainwindow.ui \
-    about.ui
+    about.ui \
+    serial.ui
 
 RESOURCES += \
     resources.qrc

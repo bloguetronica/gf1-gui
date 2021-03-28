@@ -19,17 +19,48 @@
 
 
 // Includes
-#include "about.h"
-#include "ui_about.h"
+#include <QProcess>
+#include "serial.h"
+#include "ui_serial.h"
 
-About::About(QWidget *parent) :
+Serial::Serial(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::About)
+    ui(new Ui::Serial)
 {
     ui->setupUi(this);
+    list();
+    ui->lineEditSerial->setValidator(new QRegExpValidator(QRegExp("[A-Za-z\\d-]{1,12}"), this));
 }
 
-About::~About()
+Serial::~Serial()
 {
     delete ui;
+}
+
+QString Serial::serialLineEditText() const
+{
+    return ui->lineEditSerial->text();
+}
+
+void Serial::setSerialLineEditText(const QString &serialstr)
+{
+    ui->lineEditSerial->setText(serialstr);
+}
+
+void Serial::on_pushButtonRefresh_clicked()
+{
+    ui->textBrowserList->clear();
+    list();
+}
+
+void Serial::list()
+{
+    QProcess sh;
+    sh.setProcessChannelMode(QProcess::MergedChannels);
+    sh.start("sh", QStringList() << "-c" << "gf1-list");
+    sh.waitForFinished();
+    QString result = sh.readAll();
+    result.chop(1);
+    ui->textBrowserList->append(result);
+    sh.close();
 }
