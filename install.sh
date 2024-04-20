@@ -4,6 +4,7 @@ echo Obtaining required packages...
 apt-get -qq update
 apt-get -qq install build-essential
 apt-get -qq install qt5-default
+apt-get -qq install qtbase5-dev
 echo Copying source code files...
 mkdir -p /usr/local/src/gf1-gui/icons
 cp -f src/about.cpp /usr/local/src/gf1-gui/.
@@ -26,6 +27,6 @@ cp -f src/serial.ui /usr/local/src/gf1-gui/.
 echo Building and installing application...
 cd /usr/local/src/gf1-gui
 qmake
-make all clean
-mv -f gf1-gui /usr/local/bin/.
+make install clean
+rm -f gf1-gui
 echo Done!
