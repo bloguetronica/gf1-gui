@@ -6,7 +6,7 @@ installation, you must certify that your system is Debian based (or at least
 uses apt-get) and that you have an active Internet connection. It is important
 to note that you should also have the control commands for the function
 generator already installed, but you can always install them later (please
-refer to the package "gf1-2.0.tar.gz" to do so).
+refer to the packages "gf1-2.1.tar.gz" or "gf1-2.0.tar.gz" to do so).
 
 A list of the included scripts follows:
 – install.sh;
