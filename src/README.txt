@@ -5,12 +5,14 @@ of relevant files follows:
 – about.ui;
 – gf1-gui.pro;
 – icons/active64.png
+– icons/gf1-gui.png
 – icons/greyed64.png
 – icons/selected64.png
 – main.cpp;
 – mainwindow.cpp;
 – mainwindow.h;
 – mainwindow.ui;
+– misc/gf1-gui.desktop;
 – resources.qrc;
 – serial.cpp;
 – serial.h;
