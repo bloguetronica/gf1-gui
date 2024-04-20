@@ -1,5 +1,5 @@
-/* GF1 GUI - Version 3.0 for Debian Linux
-   Copyright (c) 2017-2019 Samuel Lourenço
+/* GF1 GUI - Version 3.1 for Debian Linux
+   Copyright (c) 2017-2024 Samuel Lourenço
 
    This program is free software: you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the Free
@@ -55,8 +55,7 @@ void MainWindow::on_actionLoad_triggered()
         QFile file(filename);
         if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
-            QMessageBox errorRead;
-            errorRead.critical(this, tr("Error"), tr("Could not read from %1.\n\nPlease verify that you have read access to this file.").arg(QDir::toNativeSeparators(filename)));
+            QMessageBox::critical(this, tr("Error"), tr("Could not read from %1.\n\nPlease verify that you have read access to this file.").arg(QDir::toNativeSeparators(filename)));
         }
         else
         {
@@ -65,24 +64,21 @@ void MainWindow::on_actionLoad_triggered()
             file.close();
             if (error)
             {
-                QMessageBox errorInvalid;
-                errorInvalid.critical(this, tr("Error"), tr("Invalid XML. The file might be corrupted or incomplete."));
+                QMessageBox::critical(this, tr("Error"), tr("Invalid XML. The file might be corrupted or incomplete."));
             }
             else
             {
                 QDomElement root = document.firstChildElement();
                 if (root.tagName() != "settings" || root.attribute("target") != "GF1")
                 {
-                    QMessageBox errorNoSettings;
-                    errorNoSettings.critical(this, tr("Error"), tr("The selected file is not a GF1 settings file."));
+                    QMessageBox::critical(this, tr("Error"), tr("The selected file is not a GF1 settings file."));
                 }
                 else
                 {
                     int errorcount = implementSettings(root);
                     if (errorcount > 0)
                     {
-                        QMessageBox warningDebug;
-                        warningDebug.warning(this, tr("Warning"), tr("Found %1 setting(s) with invalid attribute values.\n\nPlease check your settings file for out-of-bounds or unsupported attribute values.").arg(errorcount));
+                        QMessageBox::warning(this, tr("Warning"), tr("Found %1 setting(s) with invalid attribute values.\n\nPlease check your settings file for out-of-bounds or unsupported attribute values.").arg(errorcount));
                     }
                     filepath_ = filename;
                 }
@@ -115,8 +111,7 @@ void MainWindow::on_actionSave_triggered()
         QFile file(filename);
         if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         {
-            QMessageBox errorWrite;
-            errorWrite.critical(this, tr("Error"), tr("Could not write to %1.\n\nPlease verify that you have write access to this file.").arg(QDir::toNativeSeparators(filename)));
+            QMessageBox::critical(this, tr("Error"), tr("Could not write to %1.\n\nPlease verify that you have write access to this file.").arg(QDir::toNativeSeparators(filename)));
         }
         else
         {
@@ -133,13 +128,13 @@ void MainWindow::on_actionSerial_triggered()
 {
     Serial serial;
     serial.setSerialLineEditText(serialstr_);
-    if (serial.exec() == QDialog::Accepted)
-    {
+    if (serial.exec() == QDialog::Accepted) {
+        QString title = tr("GF1 Function Generator");
         serialstr_ = serial.serialLineEditText();
-        if (serialstr_ == "")
-            this->setWindowTitle("GF1 Function Generator");
-        else
-            this->setWindowTitle("GF1 Function Generator (S/N: " + serialstr_ + ")");
+        if (!serialstr_.isEmpty()) {
+            title.append(tr(" (S/N: %1)").arg(serialstr_));
+        }
+        this->setWindowTitle(title);
     }
 }
 
@@ -191,7 +186,7 @@ void MainWindow::on_doubleSpinBoxFreq_valueChanged(const QString &arg)
 
 void MainWindow::on_pushButtonApply_clicked()
 {
-    QString amp, command, freq, wave, zload;
+    QString amp, freq, wave, zload;
     amp = QString::number(ui->doubleSpinBoxAmp->value());
     freq = QString::number(ui->doubleSpinBoxFreq->value());
     if (ui->comboBoxWave->currentIndex() == 0)
