@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=GF1 GUI
+Icon=gf1-gui
+Exec=gf1-gui
+Terminal=false
+Categories=Development;Electronics;
